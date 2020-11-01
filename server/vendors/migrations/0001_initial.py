@@ -8,31 +8,53 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Vendor',
+            name="Vendor",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('code', models.CharField(max_length=6, unique=True)),
-                ('type', models.CharField(max_length=15)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                ("code", models.CharField(max_length=6, unique=True)),
+                ("type", models.CharField(max_length=15)),
             ],
         ),
         migrations.CreateModel(
-            name='Invoice',
+            name="Invoice",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('document_number', models.IntegerField(unique=True)),
-                ('invoice_numbsers', models.IntegerField()),
-                ('type', models.CharField(max_length=2)),
-                ('doc_date', models.DateField()),
-                ('posting_date', models.DateField()),
-                ('due_date', models.DateField()),
-                ('amount_in_loc', models.IntegerField()),
-                ('vendor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoice', to='vendors.vendor')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("document_number", models.IntegerField(unique=True)),
+                ("invoice_numbsers", models.IntegerField()),
+                ("type", models.CharField(max_length=2)),
+                ("doc_date", models.DateField()),
+                ("posting_date", models.DateField()),
+                ("due_date", models.DateField()),
+                ("amount_in_loc", models.IntegerField()),
+                (
+                    "vendor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="invoice",
+                        to="vendors.vendor",
+                    ),
+                ),
             ],
         ),
     ]
